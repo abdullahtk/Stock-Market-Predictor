@@ -1,0 +1,12 @@
+#!/bin/sh
+'''exec' "/Users/abdullahaltokhais/Documents/Projects/Data Science Nano Degree/DSND_Term1/projects/Capstone/myproject/stock_price_predictor/bin/python3.7" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from setuptools.command.easy_install import main
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

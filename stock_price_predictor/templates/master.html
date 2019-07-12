@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Stock Price Predictor</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Stock Price Predictor</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">Stock Price Predictor</h1>
+        <p class="text-center">Build model and predict future close price</p>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12 form-group-md justify-content-center align-items-center">
+                <form action="{{ url_for('go') }}" method="get">
+                    <div class="form-row">
+                        <div class="col-md-4 form-group vertical-center">
+                            <p></br></br>
+                                <label for="select">Choose Stock</label>
+                                </br>
+                                <select id="select" name="ticker">
+                                    <option value="GOOG">Google</option>
+                                    <option value="AAPL">Apple</option>
+                                    <option value="MSFT">Microsoft</option>
+                                    <option value="TSLA">Tesla</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 form-group text-center">
+                            <p>
+                                <label for="start_date">Training Start Date</label>
+                                <input type="date" id="start_date" name="start_date" value="2011-01-01" readonly>
+                            </p>
+                            <p>
+                                <label for="end_date">Training End Date</label>
+                                <input type="date" id="end_date" name="end_date" value="2018-12-31" readonly>
+                            </p>
+                        </div>
+                        <div class="col-md-4 form-group text-center">
+                            <p>
+                                <label for="prediction_date">Prediction Date</label></br>
+                                <!-- <input type="date" id="prediction_date" name="prediction_date"max="2019-07-11" min="2018-12-31" > -->
+                                <select id="select2" name="prediction_date">
+                                    <option value="2019-01-02">2019-01-02</option>
+                                    <option value="2019-02-04">2019-02-04</option>
+                                    <option value="2019-03-18">2019-03-18</option>
+                                </select>
+
+                            </p>
+                            <p>
+                                <label for="number_of_days">How many days to predict?</label>
+                                <input type="text" id="number_of_days" name="number_of_days" placeholder="Default 5">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group-md justify-content-center align-items-center">
+                        <button type="submit" class="col-md-12 form-group text-center btn btn-success">Predict Price</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

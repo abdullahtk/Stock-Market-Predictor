@@ -47,6 +47,7 @@ The Force Index is an indicator that uses price and volume to assess the power b
 
 - On Balance Volume
 It combines price and volume in an attempt to determine whether price movements are strong or are weak. The formula to calculate the OBV is:
+
 ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/fbbbd91a366a4a7177715be92442a468cadb8b78)
 
 
